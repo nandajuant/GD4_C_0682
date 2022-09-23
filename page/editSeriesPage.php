@@ -28,7 +28,7 @@ if(isset($_GET['id'])){
 include ('../db.php');
 $id = $_GET['id'];
 $query = mysqli_query($con,
-"SELECT  name, genre, realese, season, synopsis FROM movies WHERE id='$id'") or
+"SELECT  name, genre, realese, episode, season, synopsis FROM series WHERE id='$id'") or
 die(mysqli_error($con));
 $data = mysqli_fetch_assoc($query);
 
@@ -40,8 +40,8 @@ $data = mysqli_fetch_assoc($query);
 solid #D40013; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0,
 0.19);" >
 <div class="body d-flex justify-content-between">
-<h4>EDIT DATA MOVIE</h4>
-<a href="../page/listMoviesPage.php?id='.$data['id'].'"> 
+<h4>EDIT DATA SERIES</h4>
+<a href="../page/listSeriesPage.php?id='.$data['id'].'"> 
 <i style="color: red" class="fa fa-arrow-left fa-2x"></i>
 </a>
 </div>
@@ -55,7 +55,7 @@ solid #D40013; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 
 <div class="card-body"> -->
 
 
-<form action="../process/editMovieProcess.php"
+<form action="../process/editSeriesProcess.php"
 method="post">
 <div class="mb-3">
 <label for="exampleInputEmail1" class="formlabel">Name</label>
@@ -74,6 +74,7 @@ select example" name="genre" id="genre" value=<?php echo "$data[genre]" ?>>
 <option value="Adventure">Adventure</option>
 <option value="Horror">Horror</option>
 <option value="Comedy">Comedy</option>
+<option values="Action">Action</option>
 </select>
 </div>
 <div class="mb-3">
@@ -81,6 +82,12 @@ select example" name="genre" id="genre" value=<?php echo "$data[genre]" ?>>
 <label for="exampleInputEmail1" class="formlabel">Realese</label>
 <input class="form-control" id="realese"
 name="realese" aria-describedby="emailHelp" value=<?php echo "$data[realese]" ?>>
+</div>
+<div class="mb-3">
+<div class="mb-3">
+<label for="exampleInputEmail1" class="formlabel">Episode</label>
+<input class="form-control" id="episode"
+name="episode" aria-describedby="emailHelp" value=<?php echo "$data[episode]" ?>>
 </div>
 <div class="mb-3">
 <label for="exampleInputEmail1" class="formlabel">Season</label>
@@ -94,10 +101,10 @@ name="synopsis" aria-describedby="emailHelp" value=<?php echo "$data[synopsis]" 
 </div>
 <div class="d-grid gap-2">
 <button type="submit" class="btn btn-primary"
-name="save">Save</button>
+name="saveSeries">Save</button>
 </div>
 </form>
-<p class="mt-2 mb-0">Cancel add a Movie? <a
+<p class="mt-2 mb-0">Cancel edit a Series? <a
 href="./listMoviesPage.php" class="text-primary">Click here!</a></p>
 </div>
 </div>
